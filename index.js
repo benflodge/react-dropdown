@@ -155,7 +155,8 @@ class Dropdown extends Component {
 
   handleDocumentClick (event) {
     if (this.mounted) {
-      if (!this.dropdownRef.current.contains(event.target)) {
+      const target = event.composedPath ? event.composedPath()[0] : event.target
+      if (!this.dropdownRef.current.contains(target)) {
         if (this.state.isOpen) {
           this.setState({ isOpen: false })
         }
